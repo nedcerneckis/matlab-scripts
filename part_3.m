@@ -59,12 +59,12 @@ subplot(2,5,10), imshow(blurry_4_sharpened_decoded);
 title(sprintf('\\sigma = 4 \n %d', isequal(correct_matrix, blurry_4_sharpened_decoded)));
 
 % Experiment 2
-PSF = fspecial('gaussian',5,5);
+PSF = fspecial('gaussian',3,3);
 original_sharpened = deconvlucy(qr_1, PSF, 5);
 blurry_1_sharpened = deconvlucy(blurry_1, PSF, 5);
 blurry_2_sharpened = deconvlucy(blurry_2, PSF, 5);
-blurry_3_sharpened = deconvlucy(blurry_1, PSF, 5);
-blurry_4_sharpened = deconvlucy(blurry_1, PSF, 5);
+blurry_3_sharpened = deconvlucy(blurry_3, PSF, 5);
+blurry_4_sharpened = deconvlucy(blurry_4, PSF, 5);
 
 original_sharpened_decoded = decode_qr_module(original_sharpened, 29);
 blurry_1_sharpened_decoded = decode_qr_module(blurry_1_sharpened, 29);
@@ -93,3 +93,6 @@ subplot(2,5,9), imshow(blurry_3_sharpened_decoded);
 title(sprintf('\\sigma = 3 \n %d', isequal(correct_matrix, blurry_3_sharpened_decoded)));
 subplot(2,5,10), imshow(blurry_4_sharpened_decoded);
 title(sprintf('\\sigma = 4 \n %d', isequal(correct_matrix, blurry_4_sharpened_decoded)));
+
+f4 = figure('Name', '3D visualisation of Gaussian filter');
+surf(PSF);
