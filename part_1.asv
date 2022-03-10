@@ -1,0 +1,13 @@
+% Read in QR_1 image as a matrix of uint8 values
+qr_1 = imread('images/QR_1.jpeg');
+
+% Binarize QR image using adaptive thresholding
+Threshold = adaptthresh(qr_1, 1);
+bw_img = imbinarize(qr_1, Threshold);
+
+f1 = figure('Name', 'Thresholding applied to matrix');
+subplot(2,1,1), imshow(qr_1);
+title('Before adaptive thresholding');
+subtitle(num2str)
+subplot(2,1,2), imshow(bw_img);
+title('After adaptive thresholding');
