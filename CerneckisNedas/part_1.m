@@ -1,5 +1,5 @@
 clear variables;
-close all;
+
 
 % Read in QR_1 image as a matrix of uint8 values
 qr_1 = imread('images/QR_1.jpeg');
@@ -10,18 +10,18 @@ Threshold = adaptthresh(qr_1, 1);
 bw_img = imbinarize(qr_1, Threshold);
 
 f1 = figure('Name', 'Thresholding applied to matrix');
-subplot(1,2,1), imshow(qr_1);
+subplot(2,1,1), imshow(qr_1);
 title('Original image');
-subplot(1,2,2), imshow(bw_img);
+subplot(2,1,2), imshow(bw_img);
 title('After applying adaptive thresholding');
 
 % Convert QR code to binary matrix
 qr_1_decoded = decode_qr_module(qr_1, 29);
 
 f2 = figure('Name', 'QR code converted to binary matrix')
-subplot(1,2,1), imshow(qr_1);
+subplot(2,1,1), imshow(qr_1);
 title('Original image (177x177)');
-subplot(1,2,2), imshow(qr_1_decoded);
+subplot(2,1,2), imshow(qr_1_decoded);
 title('QR_1 converted to a 29x29 binary matrix');
 
 % Show binary matrix of decoded QR Code

@@ -55,14 +55,12 @@ noisy_3_diff = correct_matrix - noisy_3_decoded;
 noisy_4_decoded = decode_qr_module(noisy_4_filtered_33, 29);
 noisy_4_diff = correct_matrix - noisy_4_decoded;
 
-f3 = figure('Name', 'Noisy QR codes decoded with spatial filters');
-subplot(2,2,1), imshow(noisy_3_filtered_33);
-title('0.35 noise density (filtered)');
-subplot(2,2,2), imshow(noisy_4_filtered_33)
-title('0.50 noise density (filtered)');
-subplot(2,2,3), imshow(noisy_3_decoded);
+f3 = figure('Name', 'Noisy QR codes decoded with spatial filters (0 = incorrect, 1 = correct)');
+subplot(1,3,1), imshow(qr_1);
+title('Original Image');
+subplot(1,3,2), imshow(noisy_3_decoded);
 title(sprintf('Noise Density = 0.35 \n %d',isequal(correct_matrix, noisy_3_decoded)));
-subplot(2,2,4), imshow(noisy_4_decoded);
+subplot(1,3,3), imshow(noisy_4_decoded);
 title(sprintf('Noise Density = 0.50 \n %d',isequal(correct_matrix, noisy_4_decoded)));
 
 % Show binary matrix of decoded QR Code

@@ -10,7 +10,7 @@ function [final_array] = decode_qr(input_image)
     end
 
     modulepixel_size = mode(horizontal_ratios);
-    module_size = round(length(input_image) / modulepixel_size);
+    module_size = floor(length(input_image) / modulepixel_size);
     final_array = decode_qr_module(input_image, module_size);
 end
 

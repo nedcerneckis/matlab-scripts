@@ -1,6 +1,6 @@
 function [final_array] = decode_qr_module(input_image, module_size)
     qr_length = size(input_image, 1);
-    modulepixel_size = round(qr_length/module_size);
+    modulepixel_size = floor(qr_length/module_size);
     max_size = modulepixel_size * module_size;
 
     Threshold = adaptthresh(input_image, 1);
