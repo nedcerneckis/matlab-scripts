@@ -7,7 +7,7 @@ qr_2 = imread('images/QR_2.jpeg');
 % Convert QR code to binary matrix
 qr_2_decoded = decode_qr(qr_2);
 
-% Testing different downscaling on performance of solution
+% Testing different downscaling on performance of the solution
 qr_2_520x520 = imresize(qr_2, [520 520]);
 qr_2_370x370 = imresize(qr_2, [370 370]);
 qr_2_260x260 = imresize(qr_2, [260 260]);
