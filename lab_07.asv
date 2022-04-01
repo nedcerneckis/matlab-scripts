@@ -1,0 +1,20 @@
+video_1 = 'videos/Walk1_CAVIAR.mp4';
+v_reader_1 = VideoReader(video_1);
+v_player_1 = vision.VideoPlayer('Name', 'Output_Image', 'Position', [750,200,640,360]);
+v_player_2 = vision.VideoPlayer('Name', 'Output_Image', 'Position', [100,200,640,360]);
+video_1_fps = v_reader_1.FrameRate;
+v_input_1 = videoinput('macvideo', 1);
+N = 300;
+v_input_1.FramesPerTrigger = N+30;
+h1 = fspecial('sobel');
+h2=h1';
+
+while(v_input_1.FramesAcquired < N)
+    frame = getsnapshot(v_input_1);
+    frame_grey = rgb2gray(frame);
+    sobel_gradient = abs(conv2(h1, frame_grey)) + abs(conv2(h2,frame_grey));
+    sobel_max = max(sobel_gradient(:));
+    sobel_show = uint8(round(255*sobel_gradient/sobel_max));
+    v_player_2(sobel_show);
+    v_player_1(frame);
+end
